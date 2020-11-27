@@ -1,0 +1,18 @@
+version: '3'
+services:
+    webdav:
+        image: webdav
+        build: ../webdav
+        #restart: always
+        ports:
+            - "45652:80"
+        volumes:
+            - webdav_volume:/var/www/html/webdav
+
+volumes:
+    webdav_volume:
+        driver: local
+        driver_opts:
+            type: "none"
+            o: "bind"
+            device: "/data/webdav/volume"
